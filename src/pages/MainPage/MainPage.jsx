@@ -1,8 +1,9 @@
 import React from 'react'
+import MusicPlayer from '../../MusicPlayer'
 
 const MainPage = () => {
   return (
-    <div>MainPage</div>
+   <MusicPlayer/>
   )
 }
 

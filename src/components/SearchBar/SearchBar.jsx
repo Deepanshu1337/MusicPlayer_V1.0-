@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import './SearchBar.css';
+import React, { useState } from "react";
 
-const SearchBar = ({ onAddToPlaylist }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [visible, setVisible] = useState(false)
+const Navbar = ({ onAddToPlaylist }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visible, setVisible] = useState(false);
 
   const handleSearch = async () => {
-    const accessToken = 'your-access-token';
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track`, {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-      },
-    });
+    const accessToken = "your-access-token";
+    const response = await fetch(
+      `https://api.spotify.com/v1/search?q=${searchQuery}&type=track`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     const data = await response.json();
     const track = data.tracks.items[0];
     const song = {
@@ -22,25 +24,31 @@ const SearchBar = ({ onAddToPlaylist }) => {
       audio: track.preview_url,
     };
     onAddToPlaylist(song);
+    setSearchQuery("");
+    setVisible(true);
   };
 
   return (
-    <div className="nav-bar-container">
-    {visible ? (
-      <input
-        type="text"
-        className="search-input"
-        placeholder="Search for a song"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-    ) : (
-      <button className="search-button" onClick={handleSearch}>
-        <i className="bx bx-search-alt-2" />
-      </button>
-    )}
-  </div>
+    <div className="navbar-containe w-full absolute z-10 pt-3 px-2 rounded-2xl">
+      <div className="w-full flex justify-between px-2">
+        <input
+          type="text"
+          className="search-input w-[85%] bg-gray-200 text-white rounded-lg px-4 py-1"
+          placeholder="Search for a song"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onBlur={() => setVisible(false)}
+          autoFocus
+        />
+        <button
+          className="search-button text-white text-2xl"
+          onClick={() => setVisible(true)}
+        >
+          <i className="bx bx-search-alt-2" />
+        </button>
+      </div>
+    </div>
   );
 };
 
-export default SearchBar;
+export default Navbar;
