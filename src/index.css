@@ -1,3 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+    background-color: #4682b4; /* Steel Blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

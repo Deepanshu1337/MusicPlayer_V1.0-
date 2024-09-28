@@ -1,0 +1,33 @@
+.playlist-container {
+    width: 100%;
+    max-width: 85%;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+  
+  .playlist-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .playlist-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .playlist-item {
+    color: #d3d3d3;
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  
+  .playlist-item.current-song {
+    color: #4682b4;
+    font-weight: bold;
+  }
