@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import SongInfo from "../components/SongInfo";
-import Controls from "../components/Controls";
-import ProgressBar from "../components/ProgressBar";
-import SearchBar from "../components/SearchBar";
+import { Link } from "react-router-dom";
 import song1Img from "../assests/O-Maahi-From-Dunki-Hindi-2023-20231211171007-500x500.jpg";
 import song1 from "../assests/O Mahi.mp3";
 import song2 from "../assests/legacy.mp3";
 import song2Img from "../assests/download.jpg";
 
 const MusicPlayer = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visible, setVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -114,28 +113,8 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full rounded-xl overflow-hidden">
-      <div className="h-[75%] ">
-        <SearchBar onAddToPlaylist={addToPlaylist} />
-        <SongInfo currentSong={currentSong} />
-      </div>
-
-     <div className="bg-black pt-8 rounded-b-xl">
-     <ProgressBar
-        currentTime={currentTime}
-        duration={duration}
-        onSeek={handleSeek}
-      />
-      <Controls
-        isPlaying={isPlaying}
-        onTogglePlay={togglePlay}
-        onSkipPrevious={skipPrevious}
-        onSkipNext={skipNext}
-      />
-     </div>
-
-      <audio ref={audioRef} />
-    </div>
+  <>
+  </>
   );
 };
 
