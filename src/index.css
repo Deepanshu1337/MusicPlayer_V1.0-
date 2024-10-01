@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.margin-bottom1 {
+    margin-bottom: 1rem;
+  }

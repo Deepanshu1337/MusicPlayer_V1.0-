@@ -1,48 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
+import musicData from "../../data/musicData";
+import { Link } from "react-router-dom";
+import SongItem from "../../components/SongItem";
 
 const SearchPage = () => {
-  const [tracks, setTracks] = useState([
-    { title: "Moonlight Serenade", singer: "Ella Fitzgerald" },
-    { title: "Electric Dreams", singer: "John Williams" },
-    { title: "City of Stars", singer: "Ryan Gosling" },
-    { title: "Golden Horizon", singer: "Adele Harper" },
-    { title: "Whispers in the Dark", singer: "Michael Collins" },
-    { title: "Ocean Breeze", singer: "Lana Del Rey" },
-    { title: "Fire in the Rain", singer: "Jason Turner" },
-    { title: "Echoes of You", singer: "Sia Freeman" },
-    { title: "Dancing in the Sky", singer: "Taylor Swift" },
-    { title: "Starlit Memories", singer: "Bruno Mars" },
-  ]);
-
+  const tracks = [...musicData];
   return (
     <>
-      <div className="h-16 px-2 backdrop-blur-sm bg-black flex flex-col gap-0  border-b">
-        <ul className="flex h-full justify-start items-center gap-4 text-gray-400 p-2 font-medium text-lg ">
-          <li className=" text-white">
-            <button className="hover:border-b-2 hover:border-gray-400">Songs</button>
-          </li>
-          <li>
-            <button className="hover:border-b-2 hover:border-gray-400">Artist</button>
-          </li>
-        </ul>
-      </div>
-      <div className="h-[1000px] backdrop-blur-sm bg-black/95">
-        {tracks.map((track, index) => {
-          return (
-            <div
-              key={index}
-              className="flex items-start gap-1 py-6 px-4 border-b text-white"
-            >
-              <div>
-                <img src="" alt="" />
-              </div>
-              <div className="flex flex-col">
-                <h3 className="text-xl font-semibold">{track.title}</h3>
-                <p className="text-base text-gray-400">{track.singer}</p>
-              </div>
-            </div>
-          );
-        })}
+      <div className="h-[100vh] bg-gradient-to-b from-stone-800 to-slate-900 text-white">
+        <div className="flex justify-between items-center p-4 border-b-2  ">
+          <div className="flex gap-4 text-3xl">
+            <Link to="/">
+              <i className="bx bx-arrow-back"></i>
+            </Link>
+          </div>
+          <div className=" relative mx-auto text-gray-800">
+            <input
+              className="border-2 border-gray-300 bg-white h-8 px-5 pr-5 rounded-2xl text-sm focus:outline-none "
+              type="search"
+              name="search"
+              placeholder="Search songs..."
+            />
+          </div>
+
+          <div className="flex gap-4 text-3xl">
+            <Link to="/playlist">
+              <i className="bx bxs-playlist"></i>
+            </Link>
+          </div>
+        </div>
+
+        {musicData.map((track, index) => (
+        <SongItem key={index} track={track} /> // Use SongItem component
+      ))}
       </div>
     </>
   );

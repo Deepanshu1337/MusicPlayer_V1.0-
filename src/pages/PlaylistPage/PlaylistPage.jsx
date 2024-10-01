@@ -1,45 +1,26 @@
 import React from "react";
+import musicData from "../../data/musicData.js";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import SongItem from "../../components/SongItem";
 
 const PlaylistPage = () => {
-  const [tracks, setTracks] = useState([
-    { title: "Moonlight Serenade", singer: "Ella Fitzgerald" },
-    { title: "Electric Dreams", singer: "John Williams" },
-    { title: "City of Stars", singer: "Ryan Gosling" },
-    { title: "Golden Horizon", singer: "Adele Harper" },
-    { title: "Whispers in the Dark", singer: "Michael Collins" },
-    { title: "Ocean Breeze", singer: "Lana Del Rey" },
-    { title: "Fire in the Rain", singer: "Jason Turner" },
-    { title: "Echoes of You", singer: "Sia Freeman" },
-    { title: "Dancing in the Sky", singer: "Taylor Swift" },
-    { title: "Starlit Memories", singer: "Bruno Mars" },
-  ]);
+  const playlistTracks = [...musicData];
+
   return (
     <>
-      <>
-        <div className="h-12 px-2 backdrop-blur-sm bg-black border-b">
-          <h1 className="h-full text-white flex justify-center items-center text-xl font-semibold ">Playlist</h1>
-        </div>
-        <div className="h-[1000px] backdrop-blur-sm bg-black/95">
-          {tracks.map((track, index) => {
-            return (
-              <div
-                key={index}
-                className="flex items-start gap-1 py-6 px-4 border-b text-white"
-              >
-                <div>
-                  <img src="" alt="" />
-                </div>
-                <div className="flex flex-col">
-                  <h3 className="text-xl font-semibold">{track.title}</h3>
-                  <p className="text-base text-gray-400">{track.singer}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </>
+      <div className="h-[100vh] bg-gradient-to-b from-stone-800 to-slate-900 text-white p-4">
+      <div className="flex items-center gap-4 border-b-2 p-2" >
+            <Link to="/">
+              <i className="bx bx-arrow-back text-3xl "></i>
+            </Link>
+
+            <h1 className="font-semibold text-2xl">Playlist</h1>
+          </div>
+          {playlistTracks.map((track, index) => (
+        <SongItem key={index} track={track} /> 
+      ))}
+      </div>
+
     </>
   );
 };
