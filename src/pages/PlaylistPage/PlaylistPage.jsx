@@ -1,11 +1,11 @@
-import React from "react";
-import musicData from "../../data/musicData.js";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import SongItem from "../../components/SongItem";
+import PlayerContext from "../../context/PlayerContext.js";
 
 const PlaylistPage = () => {
-  const playlistTracks = [...musicData];
 
+  const {playList} = useContext(PlayerContext)
   return (
     <>
       <div className="h-[100vh] bg-gradient-to-b from-stone-800 to-slate-900 text-white p-4">
@@ -16,7 +16,9 @@ const PlaylistPage = () => {
 
             <h1 className="font-semibold text-2xl">Playlist</h1>
           </div>
-          {playlistTracks.map((track, index) => (
+          {playList.length === 0 
+          ? "Playlist is empty" 
+          :playList.map((track, index) => (
         <SongItem key={index} track={track} /> 
       ))}
       </div>

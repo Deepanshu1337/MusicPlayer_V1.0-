@@ -1,0 +1,93 @@
+
+
+.playingControls {
+    margin-top: 2rem;
+    gap: 2rem;
+    font-size: 3.8rem;
+  }
+  .playingControlsBtns:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+    text-shadow: 4px 4px 20px rgba(255, 255, 255, 0.137);
+  }
+  
+  .seeker-container {
+    width: 100%;
+  }
+  
+  .flex-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+  }
+  
+  .range-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+  
+  .range-input {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      black 0%,
+      #e5e7eb 0%
+    ); /* Initially, no progress */
+    border-radius: 999px;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .range-input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    background: transparent;
+  }
+  
+  .range-input::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    margin-top: -2px;
+  }
+  
+  .range-input::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .range-input::-moz-range-track {
+    background: transparent;
+    height: 4px;
+  }
+  
+  .range-input::-ms-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .range-input::-ms-track {
+    background: transparent;
+    height: 4px;
+    border-color: transparent;
+    color: transparent;
+  }
+  

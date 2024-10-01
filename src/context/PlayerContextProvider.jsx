@@ -5,8 +5,9 @@ import musicData from "../data/musicData";
 
 const PlayerContextProvider = ({children})=>{
     const [currentTrack, setCurrentTrack] = useState(musicData[0]);
+    const [playList, setPlayList] = useState([]);
     return (
-        <PlayerContext.Provider value={{currentTrack, setCurrentTrack}}>
+        <PlayerContext.Provider value={{currentTrack, setCurrentTrack, playList, setPlayList}}>
             {children}
         </PlayerContext.Provider>
     )
