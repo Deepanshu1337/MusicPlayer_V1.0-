@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import "./MainPage.css";
-import songImg from "../../assests/legacy.jpg";
-import { useState } from "react";
+import { useState,useContext } from "react"
+import PlayerContext from "../../context/PlayerContext";
+
+
+
 const MainPage = () => {
  
-    const [value, setValue] = useState(0); // Slider's current value
-  
-    // Handler to update value and background gradient
+    const [value, setValue] = useState(0); 
+
+    const {currentTrack} = useContext(PlayerContext)
+
+
     const handleInputChange = (e) => {
       const newValue = e.target.value;
       setValue(newValue);
@@ -17,8 +22,8 @@ const MainPage = () => {
         {/* header-songname, artist-name, search and playlist button */}
         <div className="flex justify-between items-start p-4  ">
             <div className="pl-5">
-              <h1 className="font-semibold text-2xl">Song Name</h1>
-              <h3 className="font-semibold text-base text-gray-400">Artist</h3>
+              <h1 className="font-semibold text-2xl">{currentTrack.title}</h1>
+              <h3 className="font-semibold text-base text-gray-400">{currentTrack.artist}</h3>
             </div>
          
 
@@ -36,7 +41,7 @@ const MainPage = () => {
         {/*Track image container */}
         <div className="margin-bottom1 song-image-container ">
           <img
-            src={songImg}
+            src={currentTrack.image}
             alt="Song image"
             className="my-8 mx-auto h-[300px] "
           />

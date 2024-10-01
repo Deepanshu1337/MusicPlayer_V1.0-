@@ -1,10 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
+import PlayerContext from "../../context/PlayerContext";
 
 const SongItem = ({ track }) => {
+
+    const{setCurrentTrack} = useContext(PlayerContext);
+    
+
   return (
-    <div className="flex items-center gap-4 p-4 border-b-2">
-      <Link to={`/songs/${track.id}`}>
+    <div className="flex items-center gap-4 p-4 border-b-2" onClick={()=>setCurrentTrack(track)}>
+      <Link to='/'>
         <img
           src={track.image}
           alt={track.title}
